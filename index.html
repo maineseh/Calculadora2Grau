@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="pt-br"> 
+ <head> 
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <title>Calculadora de Equações do 2º Grau</title> 
+  <link rel="stylesheet" href="style.css"> 
+  <script defer src="script.js"></script> 
+ <style type="text/css" id="dcoder_stylesheet">/* estilos gerais da página */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #000000; /* Fundo preto */
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+}
+
+/* cabeçalho */
+header {
+    background-color: #1a1a1a;
+    color: #ff4081; /* Cor rosa */
+    text-align: center;
+    padding: 1.5em 0;
+    border-bottom: 2px solid #ff4081; /* Linha decorativa */
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5em;
+    letter-spacing: 2px;
+}
+
+/* calculadora e seções */
+.container {
+    width: 80%;
+    max-width: 600px;
+    margin: 2em auto;
+    padding: 2em;
+    background-color: #1a1a1a; /* Fundo cinza escuro */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+h2 {
+    color: #ff4081;
+    text-align: center;
+    margin-bottom: 1em;
+    font-size: 2em;
+    letter-spacing: 1px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+    margin-bottom: 1em;
+}
+
+label {
+    font-size: 1.2em;
+}
+
+input {
+    padding: 10px;
+    border: 2px solid #ff4081;
+    border-radius: 5px;
+    background-color: #333;
+    color: #ffffff;
+}
+
+#resultContainer {
+    margin-top: 2em;
+    padding: 1em;
+    background-color: #2a2a2a;
+    border-radius: 5px;
+    text-align: center; /* Adicionando centralização */
+}
+
+#calculoDelta, #calculoRaizes, #resultado {
+    font-size: 1.1em;
+    color: #ff4081;
+}
+
+/* botão personalizado */
+.custom-btn {
+    padding: 10px 20px;
+    font-size: 1.2em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: white;
+    background: linear-gradient(45deg, #ff4081, #f3a683);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.4s ease;
+    text-decoration: none; /* Remover sublinhado do link */
+}
+
+.custom-btn:hover {
+    background: linear-gradient(45deg, #f3a683, #ff4081);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(255, 64, 129, 0.5);
+}
+
+/* rodapé */
+#footer {
+    text-align: center;
+    margin-top: 2em;
+    padding: 1em 0;
+    background-color: #1a1a1a;
+}
+
+#footer a {
+    color: #ff4081;
+    text-decoration: none;
+    font-size: 1.1em;
+}
+
+#footer a:hover {
+    text-decoration: underline;
+}
+
+/* botão de apoio */
+.support-btn-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1.5em;
+    text-align: center;
+}
+
+/* Apoie */
+#apoie {
+    padding: 10px 20px;
+    font-size: 1.2em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: white;
+    background: linear-gradient(45deg, #ff4081, #f3a683);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.4s ease;
+    text-decoration: none; /* Remover sublinhado do link */
+}
+
+#apoie:hover {
+    background: linear-gradient(45deg, #f3a683, #ff4081);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(255, 64, 129, 0.5);
+}</style></head> 
+ <body> 
+  <header> 
+   <h1>Calculadora de Equações do 2º Grau</h1> 
+  </header> 
+  <div class="container" id="calculator"> 
+   <h2>Calcule as raízes da equação</h2> 
+   <form id="equationForm">
+    <label for="a">Valor de a:</label>
+    <input type="text" id="a" required placeholder="Ex: 4">
+    
+    <label for="b">Valor de b:</label>
+    <input type="text" id="b" required placeholder="Ex: -3">
+    
+    <label for="c">Valor de c:</label>
+    <input type="text" id="c" required placeholder="Ex: 5">
+    
+    <button type="submit" class="custom-btn">Calcular</button>
+</form>
+
+<div id="resultContainer">
+    <div id="calculoDelta"></div>
+    <div id="calculoRaizes"></div>
+    <div id="resultado"></div>
+   </div> 
+  </div> <!-- Seção de Apoio com Botão Centralizado --> 
+  <div class="container" id="support"> 
+   <h2>Apoie este Projeto</h2> 
+   <p>Apoie o projeto com qualquer valor simbólico:</p> 
+   <div class="support-btn-container"> <a href="https://nubank.com.br/cobrar/vhy4l/6716bcd9-994e-44db-82a1-a1c01a706b13" target="_blank" class="custom-btn btn-15">Apoie</a> 
+   </div> 
+  </div> 
+  <footer id="footer"> 
+   <p>Para mais informações, entre em contato: <a href="mailto:contato.danilogsantos@gmail.com">contato.danilogsantos@gmail.com</a></p> 
+  </footer> 
+ 
+<script type="text/javascript" id="dcoder_script">// Função para converter valor com vírgula ou ponto para número
+function parseFloatWithComma(value) {
+    // Substitui a vírgula por um ponto e tenta converter para float
+    const normalizedValue = value.replace(',', '.'); // Troca vírgula por ponto
+    const parsedValue = parseFloat(normalizedValue); // Converte para número
+    return isNaN(parsedValue) ? null : parsedValue; // Retorna null se não for um número
+}
+
+// Função para resolver a equação de segundo grau e mostrar os cálculos
+function resolverEquacaoSegundoGrau(a, b, c) {
+    let delta = b * b - 4 * a * c;
+    let resultado = '';
+    let calculoDelta = `Δ = (${b}^2) - 4 * ${a} * ${c} = ${delta.toFixed(6)}`;
+    let calculoRaizes = '';
+
+    if (delta < 0) {
+        resultado = "A equação não possui raízes reais.";
+        calculoRaizes = '';
+    } else if (delta === 0) {
+        let raiz = -b / (2 * a);
+        resultado = `A equação possui uma raiz real: ${raiz.toFixed(6)}`;
+        calculoRaizes = `Raiz = -(${b}) / (2 * ${a}) = ${raiz.toFixed(6)}`;
+    } else {
+        let raiz1 = (-b + Math.sqrt(delta)) / (2 * a);
+        let raiz2 = (-b - Math.sqrt(delta)) / (2 * a);
+        resultado = `A equação possui duas raízes reais:`;
+        calculoRaizes = `Raiz 1 = (-(${b}) + √${delta.toFixed(6)}) / (2 * ${a}) = ${raiz1.toFixed(6)}<br>
+                         Raiz 2 = (-(${b}) - √${delta.toFixed(6)}) / (2 * ${a}) = ${raiz2.toFixed(6)}`;
+    }
+
+    // Exibir os cálculos na página
+    document.getElementById('calculoDelta').innerHTML = calculoDelta;
+    document.getElementById('calculoRaizes').innerHTML = calculoRaizes;
+    document.getElementById('resultado').innerHTML = resultado;
+}
+
+// Evento para capturar o envio do formulário e calcular as raízes
+document.getElementById('equationForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Impede o envio do formulário
+
+    // Captura os valores dos inputs e tenta converter
+    let a = parseFloatWithComma(document.getElementById('a').value);
+    let b = parseFloatWithComma(document.getElementById('b').value);
+    let c = parseFloatWithComma(document.getElementById('c').value);
+
+    // Verifica se todos os valores são válidos
+    if (a === null || b === null || c === null) {
+        alert('Por favor, insira valores numéricos válidos. Use ponto ou vírgula como separador decimal.');
+        return; // Para o processo se houver valores inválidos
+    }
+
+    // Chama a função de resolver a equação
+    resolverEquacaoSegundoGrau(a, b, c);
+});</script></body></html>
